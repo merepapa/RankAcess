@@ -2,9 +2,10 @@
   "name": "marvel-api",
   "version": "1.0.0",
   "description": "Marvel Rivals API",
-  "main": "API.js",
+  "main": "index.js",
+  "type": "module"
   "scripts": {
-    "start": "node API.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "express": "^4.18.2",
