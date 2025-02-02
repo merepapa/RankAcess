@@ -1,4 +1,4 @@
-// server.js
+// Main file responsible
 import express from "express";
 import { PORT } from "./config.js";
 import { fetchPlayerData } from "./scripts/apiService.js";
