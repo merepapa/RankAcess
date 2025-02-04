@@ -4,13 +4,15 @@ and returns the corresponding rank*/
 import axios from "axios";
 import { apiConfig } from "../config.js";
 import { getRank } from "./rankUtils.js";
+import { updateData } from "./updateService.js"; 
 
 export async function fetchPlayerData(UID) {
+
+  const url = `https://marvelrivalsapi.com/api/v1/player/${UID}`
+  updateData(UID);
+ 
   try {
-    const response = await axios.request({
-      ...apiConfig,
-      url: `https://marvelrivalsapi.com/api/v1/player/${UID}`,
-    });
+    const response = await axios.request({...apiConfig, url});
 
     const rankData = JSON.parse(response.data.player.info.rank_game_1001002);
 
@@ -22,6 +24,6 @@ export async function fetchPlayerData(UID) {
       return `${rank} [${Math.round(points - 5000)}RS]`;
     }
   } catch (error) {
-    console.log("Error fetching player data:");
+    console.log("Timed Out");
   }
 }
