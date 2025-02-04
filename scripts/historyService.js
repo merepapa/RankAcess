@@ -7,7 +7,7 @@ import { updateData } from "./updateService.js";
 
 export async function processLastFiveGames(UID) {
   const url = `https://marvelrivalsapi.com/api/v1/player/${UID}`;
-  updateData();
+  updateData(UID);
 
   const response = await axios.request({ ...apiConfig, url });
 
