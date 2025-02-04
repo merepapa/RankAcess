@@ -1,11 +1,14 @@
-/* Fetches matche history from Marvel Rivals API
+/* Fetches match history from Marvel Rivals API
 and returns the last five games results as a string*/
 
 import axios from "axios";
 import { apiConfig } from "../config.js";
+import { updateData } from "./updateService.js"; 
 
 export async function processLastFiveGames(UID) {
   const url = `https://marvelrivalsapi.com/api/v1/player/${UID}`;
+  updateData();
+
   const response = await axios.request({ ...apiConfig, url });
 
   const lastFiveGames = response.data.match_history.slice(0, 5);

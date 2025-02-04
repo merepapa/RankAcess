@@ -11,19 +11,19 @@ app.get("/rank/:uid", async (req, res) => {
     const playerData = await fetchPlayerData(req.params.uid);
     res.send(playerData);
   } catch (error) {
-    res.status(500).send("Error fetching player data");
+    res.status(500).send("Code 500");
   }
 });
 
 app.get("/history/:uid", async (req, res) => {
   try {
-    const history = await processLastFiveGames(req.params.uid);
-    res.send(`Last 5 Games: ${history}`);
+    const games = await processLastFiveGames(req.params.uid);
+    res.send(`LAST 5 GAMES: ${games}`);
   } catch (error) {
     res.status(500).send("Code 500");
   }
 });
 
 app.listen(PORT, () => {
-  console.log(`Logged in. Server running on port ${PORT}`);
+  console.log(`Logged In.`);
 });
